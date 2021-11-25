@@ -13,12 +13,16 @@ struct CircleImage: View {
 
     var body: some View {
 
-        image
-            .clipShape(Circle())
-            .overlay {
-                Circle().stroke(.white, lineWidth: 4.0)
-            }
-            .shadow(radius: 7.0)
+        if #available(macOS 12.0, *) {
+            image
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.white, lineWidth: 4.0)
+                }
+                .shadow(radius: 7.0)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
